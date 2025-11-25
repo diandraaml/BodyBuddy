@@ -1,0 +1,1152 @@
+/* ========================================
+   CONSULTATION CSS - BodyBuddy
+   ======================================== */
+
+/* General Styles */
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+}
+
+/* ========================================
+   MEMBER VIEW - TRAINER CARDS
+   ======================================== */
+
+.trainers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.trainer-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.trainer-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.trainer-photo {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.trainer-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.trainer-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.status-badge {
+    background-color: #4CAF50;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.trainer-info {
+    padding: 1.5rem;
+}
+
+.trainer-info h3 {
+    margin: 0 0 0.5rem 0;
+    color: var(--dark-color);
+    font-size: 1.5rem;
+}
+
+.trainer-specialization {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+}
+
+.trainer-stats {
+    display: flex;
+    gap: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.stat-item .icon {
+    font-size: 1.2rem;
+}
+
+.trainer-expertise {
+    margin: 1.5rem 0;
+}
+
+.trainer-expertise strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.expertise-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.tag {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.trainer-bio {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.trainer-bio p {
+    margin: 0;
+    line-height: 1.6;
+    color: #555;
+}
+
+.trainer-contact {
+    margin: 1.5rem 0;
+    padding: 1rem;
+    background-color: #fff3e0;
+    border-radius: 8px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.contact-item .icon {
+    font-size: 1.3rem;
+}
+
+.btn-booking {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+/* ========================================
+   BOOKING STATUS CARDS (MEMBER VIEW)
+   ======================================== */
+
+.booking-status-card {
+    margin-bottom: 2rem;
+}
+
+.booking-status-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.booking-status-item.status-pending {
+    border-left-color: #ff9800;
+    background-color: #fff8f0;
+}
+
+.booking-status-item.status-confirmed {
+    border-left-color: #4CAF50;
+    background-color: #f1f8f4;
+}
+
+.booking-status-item.status-completed {
+    border-left-color: #2196F3;
+    background-color: #e3f2fd;
+}
+
+.booking-status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.trainer-mini-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.trainer-mini-info img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.trainer-mini-info strong {
+    display: block;
+    color: var(--dark-color);
+}
+
+.trainer-mini-info small {
+    color: #666;
+}
+
+.booking-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.booking-detail-item {
+    display: flex;
+    gap: 0.8rem;
+    align-items: start;
+}
+
+.booking-detail-item .icon {
+    font-size: 1.5rem;
+    margin-top: 0.2rem;
+}
+
+.booking-detail-item small {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+.booking-detail-item strong {
+    display: block;
+    color: var(--dark-color);
+}
+
+.trainer-response {
+    background-color: #e8f5e9;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    border-left: 3px solid var(--primary-color);
+}
+
+.trainer-response strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+}
+
+.trainer-response p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+.whatsapp-contact {
+    margin-top: 1.5rem;
+}
+
+.btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-whatsapp:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* ========================================
+   TRAINER VIEW - STATS & FILTERS
+   ======================================== */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, var(--primary-color), #388E3C);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.stat-icon {
+    font-size: 3rem;
+    opacity: 0.9;
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.stat-info p {
+    margin: 0.3rem 0 0 0;
+    opacity: 0.9;
+    font-size: 0.95rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 1rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background-color: white;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: #555;
+}
+
+.tab-btn:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.tab-btn.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+/* ========================================
+   TRAINER VIEW - BOOKING CARDS
+   ======================================== */
+
+.bookings-container {
+    margin: 2rem 0;
+}
+
+.booking-card {
+    background: white;
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border-left: 5px solid var(--primary-color);
+}
+
+.booking-card[data-status="pending"] {
+    border-left-color: #ff9800;
+}
+
+.booking-card[data-status="confirmed"] {
+    border-left-color: #4CAF50;
+}
+
+.booking-card[data-status="completed"] {
+    border-left-color: #2196F3;
+}
+
+.booking-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.member-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.member-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-color);
+}
+
+.member-info h4 {
+    margin: 0;
+    color: var(--dark-color);
+    font-size: 1.3rem;
+}
+
+.booking-topic {
+    margin: 0.3rem 0 0 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.booking-body {
+    margin: 1.5rem 0;
+}
+
+.booking-meta {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+}
+
+.meta-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+}
+
+.meta-item .icon {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
+
+.meta-item small {
+    display: block;
+    color: #666;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.meta-item strong {
+    display: block;
+    color: var(--dark-color);
+}
+
+.booking-message {
+    background-color: #fff8f0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+    border-left: 4px solid #ff9800;
+}
+
+.booking-message strong {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--dark-color);
+}
+
+.booking-message p {
+    margin: 0;
+    line-height: 1.8;
+    color: #444;
+}
+
+.member-detail-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 10px;
+    margin: 1.5rem 0;
+}
+
+.member-stat {
+    text-align: center;
+    color: white;
+}
+
+.member-stat .label {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin-bottom: 0.5rem;
+}
+
+.member-stat .value {
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.trainer-notes-display {
+    background-color: #e8f5e9;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+    border-left: 4px solid var(--primary-color);
+}
+
+.trainer-notes-display strong {
+    display: block;
+    margin-bottom: 0.8rem;
+    color: var(--primary-color);
+}
+
+.trainer-notes-display p {
+    margin: 0;
+    line-height: 1.8;
+}
+
+/* ========================================
+   BOOKING ACTIONS
+   ======================================== */
+
+.booking-actions {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed #ddd;
+}
+
+.action-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.action-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--dark-color);
+}
+
+.action-form textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-family: inherit;
+    resize: vertical;
+}
+
+.action-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.confirmed-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.completed-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    color: #1976D2;
+    font-weight: 600;
+}
+
+.completed-badge .icon {
+    font-size: 2rem;
+}
+
+/* ========================================
+   MODAL
+   ======================================== */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-small {
+    max-width: 500px;
+}
+
+.modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0 10px;
+}
+
+.modal-close:hover {
+    color: #000;
+}
+
+.modal-header {
+    padding: 2rem 2rem 1rem 2rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: var(--dark-color);
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.selected-trainer-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.selected-trainer-info img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+.selected-trainer-info h4 {
+    margin: 0;
+    color: var(--dark-color);
+}
+
+.selected-trainer-info p {
+    margin: 0.3rem 0 0 0;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+/* ========================================
+   TIPS & GUIDE CARDS
+   ======================================== */
+
+.tips-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    margin-top: 2rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tip-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.tip-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.tip-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.tip-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.guide-card {
+    background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+    margin-top: 2rem;
+}
+
+.guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.guide-item {
+    display: flex;
+    gap: 1rem;
+    align-items: start;
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+}
+
+.guide-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.guide-item strong {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--dark-color);
+}
+
+.guide-item p {
+    margin: 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ========================================
+   EMPTY STATE
+   ======================================== */
+
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: white;
+    border-radius: 15px;
+}
+
+.empty-icon {
+    font-size: 5rem;
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    color: var(--dark-color);
+    margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+    color: #666;
+}
+
+/* ========================================
+   PAYMENT FEATURES
+   ======================================== */
+
+.trainer-price-badge {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+}
+
+.payment-status-box {
+    margin: 1.5rem 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.payment-unpaid,
+.payment-pending,
+.payment-success {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.payment-unpaid {
+    background-color: #fff3e0;
+    border-left: 4px solid #ff9800;
+}
+
+.payment-pending {
+    background-color: #fff8f0;
+    border-left: 4px solid #ff9800;
+}
+
+.payment-success {
+    background-color: #e8f5e9;
+    border-left: 4px solid #4CAF50;
+}
+
+.payment-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.payment-info-box {
+    background-color: #e3f2fd;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+    border-left: 3px solid #2196F3;
+}
+
+.payment-info-box h4 {
+    margin: 0 0 0.5rem 0;
+    color: #1976D2;
+}
+
+.payment-info-box p {
+    margin: 0;
+    color: #555;
+}
+
+.modal-price {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+}
+
+.modal-price strong {
+    font-size: 1.3rem;
+}
+
+.payment-summary {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.payment-summary h4 {
+    margin: 0 0 1rem 0;
+    color: var(--dark-color);
+}
+
+.payment-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.payment-detail.total {
+    border-bottom: none;
+    border-top: 2px solid var(--primary-color);
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+}
+
+.price-large {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.payment-methods {
+    margin: 1.5rem 0;
+}
+
+.payment-method-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: white;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    margin: 0.5rem 0;
+}
+
+.method-icon {
+    font-size: 2rem;
+}
+
+.method-info strong {
+    display: block;
+    color: var(--dark-color);
+    margin-bottom: 0.3rem;
+}
+
+.method-info p {
+    margin: 0.2rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.account-number {
+    font-family: monospace;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* Payment Proof Section (Trainer View) */
+.payment-proof-section {
+    background-color: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 1.5rem 0;
+}
+
+.payment-proof-section h4 {
+    margin: 0 0 1rem 0;
+    color: var(--dark-color);
+}
+
+.payment-proof-container {
+    display: flex;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.payment-proof-image {
+    width: 300px;
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.payment-proof-image:hover {
+    transform: scale(1.05);
+}
+
+.payment-proof-info p {
+    margin: 0.5rem 0;
+    color: #555;
+}
+
+.payment-proof-info strong {
+    color: var(--dark-color);
+}
+
+.payment-verification-box {
+    background-color: #fff8f0;
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid #ff9800;
+}
+
+.payment-verification-box h4 {
+    margin: 0 0 0.5rem 0;
+    color: #ff9800;
+}
+
+.payment-verification-box p {
+    margin: 0 0 1rem 0;
+    color: #555;
+}
+
+.booking-status-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.waiting-payment-badge {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #fff3e0;
+    border-radius: 8px;
+    color: #e65100;
+    font-weight: 600;
+}
+
+.waiting-payment-badge .icon {
+    font-size: 2rem;
+}
+
+/* ========================================
+   BADGES
+   ======================================== */
+
+.badge {
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.badge-warning {
+    background-color: #fff3e0;
+    color: #e65100;
+}
+
+.badge-success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.badge-info {
+    background-color: #e3f2fd;
+    color: #1976D2;
+}
+
+.badge-danger {
+    background-color: #ffebee;
+    color: #c62828;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .trainers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .filter-tabs {
+        flex-direction: column;
+    }
+    
+    .booking-header,
+    .booking-status-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .booking-meta {
+        grid-template-columns: 1fr;
+    }
+    
+    .action-buttons,
+    .confirmed-actions {
+        flex-direction: column;
+    }
+    
+    .action-buttons .btn,
+    .confirmed-actions .btn {
+        width: 100%;
+    }
+    
+    .tips-grid,
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-content {
+        width: 95%;
+    }
+    
+    .modal-body {
+        padding: 1.5rem;
+    }
+}
+.trainer-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* pastikan sama tinggi */
+}
+
+.trainer-info {
+    flex: 1; /* bagian info memanjang otomatis menyesuaikan */
+    display: flex;
+    flex-direction: column;
+}
+
+.trainer-expertise,
+.trainer-bio,
+.trainer-contact {
+    min-height: 60px; /* supaya tidak collapse ketika kosong */
+}
+
+.btn-booking {
+    margin-top: auto; /* selalu turun ke posisi bawah */
+}

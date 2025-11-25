@@ -1,0 +1,148 @@
+/* assets/css/food.css - CSS khusus untuk halaman makanan */
+
+/* Total Calories Card */
+.total-calories-card {
+    background: #F4F1A3;
+    text-align: center;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.total-calories-card h2 {
+    margin: 0;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.total-calories-card h1 {
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+
+.total-calories-card p {
+    opacity: 0.9;
+    font-size: 1.1rem;
+}
+
+.total-calories-card .progress-bar {
+    background-color: rgba(255,255,255,0.3);
+    margin-top: 1rem;
+}
+
+.total-calories-card .progress-fill {
+    background: rgba(255,255,255,0.8);
+    color: #333;
+}
+
+/* Food Table */
+.food-table-container {
+    overflow-x: auto;
+}
+
+.food-table-container table {
+    min-width: 600px;
+}
+
+/* Food Grid Item */
+.food-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.food-item:hover {
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+}
+
+.food-item h3 {
+    color: var(--dark-color);
+    margin-bottom: 1rem;
+}
+
+/* Food Nutrition Box */
+.food-nutrition {
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.food-nutrition-item {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding: 0.3rem 0;
+}
+
+.food-nutrition-item strong {
+    color: var(--primary-color);
+}
+
+/* Food Description */
+.food-description {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 1rem 0;
+    line-height: 1.6;
+}
+
+/* Food Add Form */
+.food-add-form {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dashed #ddd;
+}
+
+.food-add-form .form-group {
+    margin-bottom: 0.8rem;
+}
+
+.food-add-form label {
+    font-size: 0.9rem;
+}
+
+.food-add-form input {
+    padding: 0.6rem;
+}
+
+.food-quantity {
+    width: 100%;
+}
+
+.total-calories-display {
+    background-color: #e8f5e9;
+    padding: 0.5rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Today's Food Section */
+.todays-food {
+    margin-bottom: 2rem;
+}
+
+.todays-food table td {
+    padding: 0.8rem;
+}
+
+.todays-food .btn-delete {
+    padding: 0.4rem 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .total-calories-card h1 {
+        font-size: 2.5rem;
+    }
+    
+    .food-nutrition-item {
+        font-size: 0.9rem;
+    }
+}

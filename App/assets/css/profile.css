@@ -1,0 +1,567 @@
+/* ========================================
+   PROFILE CSS - Modern Clean Design
+   ======================================== */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+/* Profile Card Wrapper */
+.profile-card-wrapper {
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+.profile-card {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow: hidden;
+    padding: 2.5rem 2rem;
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Profile Avatar */
+.profile-avatar-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.profile-avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    border: 4px solid #e8e8e8;
+    background-color: #f5f5f5;
+}
+
+.profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Profile Name & Email */
+.profile-name {
+    text-align: center;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.profile-email {
+    text-align: center;
+    margin: 0 0 1.2rem 0;
+    color: #95a5a6;
+    font-size: 1rem;
+}
+
+/* Member Badge Wrapper */
+.member-badge-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Role Badge */
+.role-badge {
+    display: inline-block;
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.role-badge.member {
+    background-color: #ffd966;
+    color: #7f6000;
+}
+
+.role-badge.trainer {
+    background-color: #93c47d;
+    color: #38761d;
+}
+
+/* Section Headers */
+.section-headers {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.section-header-left,
+.section-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.section-header-left {
+    padding-right: 1rem;
+}
+
+.section-header-right {
+    padding-left: 1rem;
+    border-left: 2px solid #f0f0f0;
+}
+
+.section-icon {
+    font-size: 1.1rem;
+}
+
+.section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Profile Content - 2 Columns */
+.profile-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-top: 1rem;
+}
+
+.profile-column {
+    padding: 0 1rem;
+}
+
+.profile-column:first-child {
+    border-right: 2px solid #f0f0f0;
+    padding-right: 1.5rem;
+}
+
+.profile-column:last-child {
+    padding-left: 1.5rem;
+}
+
+/* Profile Info Items */
+.profile-info-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+    gap: 0.3rem;
+}
+
+.info-label {
+    font-size: 0.8rem;
+    color: #95a5a6;
+    font-weight: 500;
+}
+
+.info-value {
+    font-size: 0.95rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.info-value-highlight {
+    font-size: 1.05rem;
+    color: #2c3e50;
+    font-weight: 700;
+}
+
+.info-value-highlight small {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #95a5a6;
+    margin-left: 2px;
+}
+
+/* Category Badge */
+.category-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.category-badge.normal {
+    background-color: #93c47d;
+    color: white;
+}
+
+.category-badge.overweight {
+    background-color: #ffd966;
+    color: #7f6000;
+}
+
+.category-badge.obese {
+    background-color: #e06666;
+    color: white;
+}
+
+.category-badge.underweight {
+    background-color: #ffd966;
+    color: #7f6000;
+}
+
+/* Target Badge */
+.target-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #93c47d;
+    color: white;
+}
+
+/* Profile Actions */
+.profile-actions {
+    .profile-actions {
+    display: block;
+    margin-top: 1.5rem;
+}
+
+}
+
+/* Edit Profile Button */
+.btn-edit-profile {
+    width: 100%;
+    padding: 14px;
+    background:  #9BA34A;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-edit-profile:hover {
+    background:  #9BA34A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* BMI Category Card */
+.bmi-category-card {
+    max-width: 650px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    padding: 2rem;
+}
+
+.bmi-category-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.bmi-category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.bmi-category-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.bmi-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bmi-dot.yellow {
+    background-color: #ffd966;
+}
+
+.bmi-dot.green {
+    background-color: #93c47d;
+}
+
+.bmi-dot.orange {
+    background-color: #ff9900;
+}
+
+.bmi-dot.red {
+    background-color: #e06666;
+}
+
+.bmi-range {
+    font-weight: 700;
+    color: #2c3e50;
+    min-width: 100px;
+}
+
+.bmi-desc {
+    color: #7f8c8d;
+}
+
+/* Edit Mode Card */
+.profile-card.edit-mode {
+    border: 3px solid #6fa8dc;
+}
+
+/* Edit Avatar */
+.profile-avatar.edit-avatar {
+    position: relative;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Edit Form Columns */
+.edit-form-columns {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    padding-top: 1rem;
+}
+
+.edit-column {
+    padding: 0 1rem;
+}
+
+.edit-column:first-child {
+    border-right: 2px solid #f0f0f0;
+    padding-right: 1.5rem;
+}
+
+.edit-column:last-child {
+    padding-left: 1.5rem;
+}
+
+/* Edit Form Groups */
+.edit-form-group {
+    margin-bottom: 1rem;
+}
+
+.edit-form-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: #95a5a6;
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+}
+
+.edit-form-group input,
+.edit-form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+    background-color: white;
+}
+
+.edit-form-group input:focus,
+.edit-form-group select:focus {
+    outline: none;
+    border-color: #6fa8dc;
+}
+
+/* Input with Unit */
+.input-with-unit {
+    position: relative;
+}
+
+.input-with-unit input {
+    padding-right: 50px;
+}
+
+.input-with-unit .unit {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: #95a5a6;
+    font-weight: 600;
+}
+
+/* Save Button */
+.btn-save-changes {
+    width: 100%;
+    padding: 14px;
+    background:  #9BA34A;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.btn-save-changes:hover {
+    background:  #9BA34A;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* ========================================
+   ALERTS
+   ======================================== */
+
+.alert {
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+@media (max-width: 768px) {
+    .section-headers {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header-right {
+        border-left: none;
+        border-top: 2px solid #f0f0f0;
+        padding-left: 0;
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .profile-content {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .profile-column:first-child {
+        border-right: none;
+        border-bottom: 2px solid #f0f0f0;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .profile-column:last-child {
+        padding-left: 1rem;
+        padding-top: 0;
+    }
+
+    .profile-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .edit-form-columns {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .edit-column:first-child {
+        border-right: none;
+        border-bottom: 2px solid #f0f0f0;
+        padding-right: 1rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .edit-column:last-child {
+        padding-left: 1rem;
+        padding-top: 0;
+    }
+
+    .profile-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 1.5rem;
+    }
+
+    .bmi-category-card {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        font-size: 1.3rem;
+    }
+
+    .profile-email {
+        font-size: 0.9rem;
+    }
+
+    .bmi-range {
+        min-width: 80px;
+        font-size: 0.85rem;
+    }
+
+    .bmi-desc {
+        font-size: 0.85rem;
+    }
+}
+.hidden {
+    display: none !important;
+}
+

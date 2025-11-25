@@ -1,0 +1,398 @@
+/* App/assets/css/dashboard.css - CSS khusus untuk halaman dashboard */
+
+/* Welcome Banner */
+.welcome-banner {
+    background: linear-gradient(90deg, #FFEFD9 0%, #FFE4C9 30%, #FFE8D6 50%, #FFF4E0 70%);
+    border-radius: 20px;
+    padding: 2.5rem 3rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.welcome-text {
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.welcome-text h2 {
+    font-size: 1.5rem;
+    color: #000;
+    margin: 0;
+    font-weight: 700;
+}
+
+.user-name {
+    color: #9BA34A ;
+    font-weight: 800;
+    text-transform: capitalize;
+}
+
+.welcome-goal {
+    text-align: center;
+    width: 100%;
+}
+
+.welcome-goal h3 {
+    font-size: 1.8rem;
+    color: #000;
+    margin: 0.3rem 0;
+    font-weight: 600;
+}
+
+.welcome-goal h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+    line-height: 1.2;
+}
+
+.gradient-text {
+    background: #9BA34A;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 900;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    display: inline-block;
+}
+
+.brand {
+    color: #6B8E23;
+    font-weight: 800;
+    font-size: 1.6rem;
+}
+
+/* Stats Grid Colorful */
+.stats-grid-colorful {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.stat-card-colorful {
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.stat-card-colorful:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.stat-card-colorful h3 {
+    font-size: 3.5rem;
+    margin: 0 0 0.3rem 0;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.stat-card-colorful p {
+    font-size: 1rem;
+    margin: 0;
+    font-weight: 700;
+}
+
+.stat-orange {
+    background: linear-gradient(135deg, #FFD4C4 0%, #FFC4B0 100%);
+    color: #8B3A00;
+}
+
+.stat-yellow {
+    background: linear-gradient(135deg, #FFF9D0 0%, #FFEAA0 100%);
+    color: #806000;
+}
+
+.stat-green {
+    background: linear-gradient(135deg, #D4F1C5 0%, #C0E8A8 100%);
+    color: #2D5016;
+}
+
+/* Trainer Section */
+.trainer-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+}
+
+.trainer-section h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.trainer-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.trainer-buttons .btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    font-size: 1.2rem;
+}
+
+/* Section Title */
+.section-title-dark {
+    font-size: 1.8rem;
+    color: #333;
+    margin: 0 0 1.5rem 0;
+    font-weight: bold;
+}
+
+/* Workout History */
+.workout-history {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 20px;
+    margin: 2rem 0;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.workout-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.workout-item {
+     background: #FAFAFA;
+    padding: 0.8rem 1.3rem;     
+    border-radius: 12px;        
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+    border: 1px solid #F0F0F0;
+}
+
+.workout-item:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    background: white;
+}
+
+.workout-info h4 {
+    color: #000;
+    font-size: 1rem;            /* DARI 1.3rem → LEBIH KECIL */
+    margin: 0 0 0.4rem 0;
+    font-weight: 700;
+}
+
+.workout-badge {
+    display: inline-block;
+    padding: 0.25rem 0.8rem;
+    font-size: 0.75rem;
+    border-radius: 20px;
+    font-weight: 700;
+    margin: 0.5rem 0;
+    letter-spacing: 0.5px;
+}
+
+.workout-badge-arm {
+    background-color: #FF9E9E;
+    color: #8B0000;
+}
+
+.workout-badge-back {
+    background-color: #C4A3FF;
+    color: #4B0082;
+}
+
+.workout-badge-leg {
+    background-color: #87CEEB;
+    color: #00008B;
+}
+
+.workout-details {
+    font-size: 0.8rem; 
+    color: #777;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    background: white;
+    border-radius: 12px;
+}
+
+.empty-state p {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Categories Section */
+.categories-section {
+    margin: 2rem 0;
+}
+
+.category-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    background: white;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.category-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.category-icon {
+    font-size: 1.5rem;
+}
+
+/* Quick Actions Section */
+.quick-actions-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.quick-action-card {
+    background: #FFFFFF;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    transition: 0.3s ease;
+    border: 1px solid #F3EBD7;
+}
+
+.quick-action-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+.quick-action-card h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin: 0 0 1rem 0;
+}
+
+.quick-action-card p {
+    color: #666;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+}
+
+.quick-action-card .btn {
+    width: 100%;
+}
+
+.quick-icon {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 0.8rem 0 1rem 0;
+}
+
+.quick-btn {
+    background: #9BA34A;
+    padding: 0.6rem 1rem;
+    border-radius: 10px;
+    font-weight: 600;
+    display: inline-block;
+    width: 70%;
+
+}
+.quick-btn:hover {
+    background: #C8D46F;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+    .stats-grid-colorful {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .welcome-banner {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+        padding: 2rem;
+    }
+    
+    .welcome-text h2 {
+        font-size: 1.5rem;
+    }
+    
+    .welcome-goal {
+        text-align: center;
+    }
+    
+    .gradient-text {
+        font-size: 2rem;
+    }
+    
+    .stats-grid-colorful {
+        grid-template-columns: 1fr;
+    }
+    
+    .stat-card-colorful h3 {
+        font-size: 2.5rem;
+    }
+    
+    .trainer-buttons {
+        flex-direction: column;
+    }
+    
+    .category-buttons {
+        flex-direction: column;
+    }
+    
+    .category-btn {
+        justify-content: center;
+    }
+    
+    .quick-actions-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .workout-item {
+        padding: 1.2rem;
+    }
+    
+    .workout-info h4 {
+        font-size: 1.1rem;
+    }
+}

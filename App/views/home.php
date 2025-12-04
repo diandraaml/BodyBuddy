@@ -29,7 +29,7 @@
             <div class="hero-text">
                 <h1 class="hero-title">WORK OUT<br>WITH ME</h1>
                 <p class="hero-description">
-                    Transformasikan diri Anda dengan program fitness lengkap.<br>
+                    Transformasikan diri Anda dengan bodybud.<br>
                     Dapatkan panduan workout, nutrisi, dan konsultasi trainer profesional.
                 </p>
                 <div class="hero-buttons">

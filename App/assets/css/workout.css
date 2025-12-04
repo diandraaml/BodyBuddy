@@ -187,3 +187,137 @@
     background-size: 12px;
     padding-right: 40px;
 }
+
+/* Video Container Styles */
+.video-container {
+    background: #C8D46F;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.video-container h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Video Preview in Create Form */
+#video-preview {
+    animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Workout Stats Layout */
+.workout-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.workout-stat {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    padding: 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.workout-stat h4 {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.9;
+}
+
+.workout-stat h3 {
+    font-size: 2rem;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Form Input Enhancements */
+.form-group input[type="url"] {
+    font-family: monospace;
+    font-size: 0.9rem;
+}
+
+.form-group small ul {
+    color: #666;
+}
+
+.form-group small ul li {
+    margin: 0.3rem 0;
+}
+
+/* Timer Section */
+.timer-section {
+    background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .workout-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .workout-stat h3 {
+        font-size: 1.5rem;
+    }
+    
+    .video-container {
+        padding: 1rem;
+    }
+    
+    .video-container h3 {
+        font-size: 1.1rem;
+    }
+}
+
+/* Alert Styles for Video Validation */
+.alert-error {
+    background-color: #fee;
+    border-left: 4px solid #f44;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    color: #c33;
+}
+
+.alert-success {
+    background-color: #efe;
+    border-left: 4px solid #4c4;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 4px;
+    color: #363;
+}

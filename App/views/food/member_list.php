@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Makanan - BodyBuddy</title>
-       <link rel="stylesheet" href="App/assets/css/global.css">
-   <link rel="stylesheet" href="App/assets/css/food.css">
+    <link rel="stylesheet" href="App/assets/css/global.css">
+    <link rel="stylesheet" href="App/assets/css/food.css">
 </head>
 <body>
     <nav class="navbar">
@@ -17,7 +17,7 @@
             <nav class="nav-links">
                 <a href="index.php?page=dashboard">Dashboard</a>
                 <a href="index.php?page=workout">Workout</a>
-                <a href="index.php?page=food">Makanan</a>
+                <a href="index.php?page=member-food">Makanan</a>
                 <a href="index.php?page=profile">Profile</a>
                 <a href="index.php?page=consultation">Konsultasi</a>
                 <a href="index.php?page=progress">Progress</a>
@@ -29,9 +29,6 @@
     <div class="container">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
             <h2>Makanan</h2>
-            <?php if ($_SESSION['role'] === 'trainer'): ?>
-                <a href="index.php?page=food&action=create" class="btn btn-primary">Tambah Makanan</a>
-            <?php endif; ?>
         </div>
 
         <?php if (isset($_SESSION['success'])): ?>
@@ -47,19 +44,29 @@
         <?php endif; ?>
 
         <!-- Total Kalori Hari Ini -->
-        <div class="card" style="background: #9BA34A; color: white; text-align: center;">
+        <div class="card" style="background: <?php echo $isOverLimit ? '#d32f2f' : '#9BA34A'; ?>; color: white; text-align: center;">
             <h2 style="margin: 0; color: white;">Total Kalori Hari Ini</h2>
             <h1 style="font-size: 3rem; margin: 1rem 0;"><?php echo $totalCalories; ?> kal</h1>
             <p style="opacity: 0.9;">Target harian: 2000 kal</p>
-            <div class="progress-bar" style="background-color: rgba(255,255,255,0.3);">
-                <div class="progress-fill" style="width: <?php echo min(($totalCalories / 2000) * 100, 100); ?>%; background: rgba(255,255,255,0.8); color: #333;">
-                    <?php echo round(($totalCalories / 2000) * 100); ?>%
+            
+            <?php if ($isOverLimit): ?>
+                <div style="background: rgba(255,255,255,0.2); padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                    <strong style="font-size: 1.2rem;">⚠️ Sudah Melebihi Kalori Harian!</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Anda tidak dapat menambahkan makanan lagi hari ini.</p>
                 </div>
-            </div>
+            <?php else: ?>
+                <div class="progress-bar" style="background-color: rgba(255,255,255,0.3);">
+                    <div class="progress-fill" style="width: <?php echo min(($totalCalories / 2000) * 100, 100); ?>%; background: rgba(255,255,255,0.8); color: #333;">
+                        <?php echo round(($totalCalories / 2000) * 100); ?>%
+                    </div>
+                </div>
+                <p style="margin-top: 1rem; opacity: 0.9;">
+                    Sisa: <?php echo max(2000 - $totalCalories, 0); ?> kal
+                </p>
+            <?php endif; ?>
         </div>
 
         <!-- Makanan Hari Ini -->
-        <?php if ($_SESSION['role'] === 'member'): ?>
         <div class="card">
             <h3>Makanan yang Sudah Dimakan Hari Ini</h3>
             <?php if (count($userFoods) > 0): ?>
@@ -81,9 +88,9 @@
                                 <td><?php echo $uf['calories']; ?> kal</td>
                                 <td><strong><?php echo $uf['total_calories']; ?> kal</strong></td>
                                 <td>
-                                    <form action="index.php?page=food&action=delete" method="POST" style="display: inline;">
+                                    <form action="index.php?page=member-food&action=delete" method="POST" style="display: inline;">
                                         <input type="hidden" name="id" value="<?php echo $uf['id']; ?>">
-                                        <button type="submit" class="btn btn-danger btn-small btn-delete">Hapus</button>
+                                        <button type="submit" class="btn btn-danger btn-small btn-delete" onclick="return confirm('Yakin ingin menghapus?')">Hapus</button>
                                     </form>
                                 </td>
                             </tr>
@@ -94,14 +101,19 @@
                 <p>Belum ada makanan yang ditambahkan hari ini.</p>
             <?php endif; ?>
         </div>
-        <?php endif; ?>
 
         <!-- Daftar Makanan -->
         <div class="card">
             <h3>Daftar Makanan Tersedia</h3>
+            <?php if ($isOverLimit): ?>
+                <div class="alert alert-error">
+                    ⚠️ Anda sudah melebihi batas kalori harian. Tidak dapat menambahkan makanan lagi hari ini.
+                </div>
+            <?php endif; ?>
+            
             <div class="grid">
                 <?php foreach ($foods as $food): ?>
-                    <div class="grid-item">
+                    <div class="grid-item" style="<?php echo $isOverLimit ? 'opacity: 0.5;' : ''; ?>">
                         <h3><?php echo $food['food_name']; ?></h3>
                         <div style="background-color: #f0f0f0; padding: 1rem; border-radius: 8px; margin: 1rem 0;">
                             <div style="display: flex; justify-content: space-between; margin: 0.5rem 0;">
@@ -123,20 +135,22 @@
                         </div>
                         <p style="font-size: 0.9rem; color: #666;"><?php echo $food['description']; ?></p>
                         
-                        <?php if ($_SESSION['role'] === 'member'): ?>
-                        <form action="index.php?page=food&action=add" method="POST" style="margin-top: 1rem;">
+                        <form action="index.php?page=member-food&action=add" method="POST" style="margin-top: 1rem;">
                             <input type="hidden" name="food_id" value="<?php echo $food['id']; ?>">
                             <div class="form-group" style="margin-bottom: 0.5rem;">
                                 <label for="quantity_<?php echo $food['id']; ?>">Jumlah Porsi:</label>
                                 <input type="number" id="quantity_<?php echo $food['id']; ?>" name="quantity" 
-                                       min="1" value="1" class="food-quantity" data-calories="<?php echo $food['calories']; ?>" required>
+                                       min="1" value="1" class="food-quantity" data-calories="<?php echo $food['calories']; ?>" 
+                                       <?php echo $isOverLimit ? 'disabled' : ''; ?> required>
                             </div>
                             <div style="margin-bottom: 0.5rem;">
                                 <small>Total: <span class="total-calories"><?php echo $food['calories']; ?> kal</span></small>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-small" style="width: 100%;">Tambahkan</button>
+                            <button type="submit" class="btn btn-primary btn-small" style="width: 100%;" 
+                                    <?php echo $isOverLimit ? 'disabled' : ''; ?>>
+                                <?php echo $isOverLimit ? 'Tidak Bisa Ditambahkan' : 'Tambahkan'; ?>
+                            </button>
                         </form>
-                        <?php endif; ?>
                     </div>
                 <?php endforeach; ?>
             </div>

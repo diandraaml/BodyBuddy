@@ -30,6 +30,7 @@
         <div class="welcome-text">
             <h2>Selamat Datang, <span class="user-name"><?php echo ucfirst(strtolower(explode(' ', $_SESSION['full_name'])[0])); ?></span>!</h2>
         </div>
+        
         <!-- Welcome Banner -->
         <div class="welcome-banner">
             <div class="welcome-goal">
@@ -43,11 +44,11 @@
         <div class="stats-grid-colorful">
             <div class="stat-card-colorful stat-orange">
                 <h3><?php echo $todayCalories; ?></h3>
-                <p>Kalori Hari Ini</p>
+                <p>Kalori Yang Masuk Hari Ini</p>
             </div>
             <div class="stat-card-colorful stat-yellow">
                 <h3><?php echo $todayCaloriesBurned; ?></h3>
-                <p>Kalori Terbakar</p>
+                <p>Kalori Workout</p>
             </div>
             <div class="stat-card-colorful stat-green">
                 <h3><?php echo count($recentWorkouts); ?></h3>
@@ -64,7 +65,7 @@
                     <span class="btn-icon"></span> Buat Workout Baru
                 </a>
                 <a href="index.php?page=food&action=create" class="btn btn-primary">
-                    <span class="btn-icon"></span> Tambah Makanan
+                    <span class="btn-icon"></span> Buat Makanan Makanan
                 </a>
                 <a href="index.php?page=consultation" class="btn btn-primary">
                     <span class="btn-icon"></span> Kelola Konsultasi
@@ -83,28 +84,21 @@
                         <div class="workout-item">
                             <div class="workout-info">
                                 <h4><?php echo $workout['workout_name']; ?></h4>
-                                <span class="workout-badge workout-badge-arm">
-                                    <?php 
-                                        // Determine category
-                                        $categoryName = isset($workout['category_name']) ? $workout['category_name'] : 'General';
+                                <?php 
+                                    // Determine category badge
+                                    $categoryName = isset($workout['category_name']) ? $workout['category_name'] : 'General';
+                                    $badgeClass = 'workout-badge-arm';
+                                    
+                                    if (stripos($categoryName, 'back') !== false) {
+                                        $badgeClass = 'workout-badge-abs';
+                                    } elseif (stripos($categoryName, 'leg') !== false) {
+                                        $badgeClass = 'workout-badge-leg';
+                                    } elseif (stripos($categoryName, 'arm') !== false) {
                                         $badgeClass = 'workout-badge-arm';
-                                        
-                                        if (stripos($categoryName, 'back') !== false || stripos($workout['workout_name'], 'back') !== false) {
-                                            $badgeClass = 'workout-badge-abs';
-                                            $categoryName = 'Back';
-                                        } elseif (stripos($categoryName, 'leg') !== false || stripos($workout['workout_name'], 'leg') !== false || 
-                                                  stripos($workout['workout_name'], 'lunge') !== false || stripos($workout['workout_name'], 'squat') !== false) {
-                                            $badgeClass = 'workout-badge-leg';
-                                            $categoryName = 'Leg';
-                                        } elseif (stripos($categoryName, 'arm') !== false || stripos($workout['workout_name'], 'push') !== false || 
-                                                  stripos($workout['workout_name'], 'curl') !== false) {
-                                            $badgeClass = 'workout-badge-arm';
-                                            $categoryName = 'Arm';
-                                        }
-                                    ?>
-                                    <span class="workout-badge <?php echo $badgeClass; ?>">
-                                        <?php echo $categoryName; ?>
-                                    </span>
+                                    }
+                                ?>
+                                <span class="workout-badge <?php echo $badgeClass; ?>">
+                                    <?php echo $categoryName; ?>
                                 </span>
                                 <p class="workout-details">
                                     <?php echo $workout['sets_completed']; ?> set | 
@@ -125,24 +119,23 @@
 
         <!-- Quick Actions -->
         <div class="quick-actions-section">
-    
-    <!-- Card Workout -->
-    <div class="quick-action-card">
-        <h3>Mulai Workout</h3>
-        <img src="App/uploads/barbel.png" class="quick-icon" alt="Workout">
-        <p>Pilih workout yang sesuai dengan target anda</p>
-        <a href="index.php?page=workout" class="btn quick-btn">Lihat Workout</a>
-    </div>
+            <!-- Card Workout -->
+            <div class="quick-action-card">
+                <h3>Mulai Workout</h3>
+                <img src="App/uploads/barbel.png" class="quick-icon" alt="Workout" style="max-width: 100px; margin: 1rem auto; display: block;">
+                <p>Pilih workout yang sesuai dengan target Anda</p>
+                <a href="index.php?page=workout" class="btn btn-primary">Lihat Workout</a>
+            </div>
 
-    <!-- Card Nutrisi -->
-    <div class="quick-action-card">
-        <h3>Atur Nutrisi</h3>
-        <img src="App/uploads/makan.png" class="quick-icon" alt="Nutrition">
-        <p>Kelola pola makan dengan panduan nutrisi</p>
-        <a href="index.php?page=food" class="btn quick-btn">Atur Makanan</a>
+            <!-- Card Nutrisi -->
+            <div class="quick-action-card">
+                <h3>Atur Nutrisi</h3>
+                <img src="App/uploads/makan.png" class="quick-icon" alt="Nutrition" style="max-width: 100px; margin: 1rem auto; display: block;">
+                <p>Kelola pola makan dengan panduan nutrisi</p>
+                <a href="index.php?page=food" class="btn btn-secondary">Atur Makanan</a>
+            </div>
+        </div>
     </div>
-
-</div>
 
     </div>
 

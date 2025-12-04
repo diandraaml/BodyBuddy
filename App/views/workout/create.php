@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buat Workout - BodyBuddy</title>
     <link rel="stylesheet" href="App/assets/css/global.css">
-   <link rel="stylesheet" href="App/assets/css/workout.css">
+    <link rel="stylesheet" href="App/assets/css/workout.css">
 </head>
 <body>
     <nav class="navbar">
@@ -60,6 +60,32 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="video_url">Link Video YouTube *</label>
+                    <input type="url" id="video_url" name="video_url" required 
+                           placeholder="https://www.youtube.com/watch?v=XXXXXXX atau https://youtu.be/XXXXXXX">
+                    <small>Masukkan link video tutorial dari YouTube. Format yang didukung:
+                        <ul style="margin: 0.5rem 0; padding-left: 1.5rem; font-size: 0.85rem;">
+                            <li>https://www.youtube.com/watch?v=VIDEO_ID</li>
+                            <li>https://youtu.be/VIDEO_ID</li>
+                            <li>https://www.youtube.com/embed/VIDEO_ID</li>
+                        </ul>
+                    </small>
+                </div>
+
+                <!-- Video Preview -->
+                <div id="video-preview" style="display: none; margin: 1rem 0; padding: 1rem; background: #f0f0f0; border-radius: 8px;">
+                    <h4>Preview Video:</h4>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; margin-top: 0.5rem;">
+                        <iframe id="preview-iframe"
+                            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                </div>
+
+                <div class="form-group">
                     <label for="repetitions">Jumlah Repetisi *</label>
                     <input type="number" id="repetitions" name="repetitions" required min="1" placeholder="Contoh: 15">
                     <small>Jumlah pengulangan per set</small>
@@ -86,5 +112,37 @@
     </div>
 
     <script src="assets/js/main.js"></script>
+    <script>
+        // Video preview functionality
+        document.getElementById('video_url').addEventListener('input', function() {
+            const url = this.value;
+            const preview = document.getElementById('video-preview');
+            const iframe = document.getElementById('preview-iframe');
+            
+            // Extract video ID from different YouTube URL formats
+            let videoId = '';
+            
+            const patterns = [
+                /youtube\.com\/watch\?v=([^&]+)/,
+                /youtu\.be\/([^?]+)/,
+                /youtube\.com\/embed\/([^?]+)/
+            ];
+            
+            for (let pattern of patterns) {
+                const match = url.match(pattern);
+                if (match) {
+                    videoId = match[1];
+                    break;
+                }
+            }
+            
+            if (videoId) {
+                iframe.src = `https://www.youtube.com/embed/${videoId}`;
+                preview.style.display = 'block';
+            } else {
+                preview.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>

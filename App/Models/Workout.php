@@ -128,23 +128,44 @@ class Workout {
     ====================== */
     public function createWorkout($data) {
         $query = "INSERT INTO {$this->table}
-                  (category_id, workout_name, description, repetitions, duration_minutes, calories_burned, created_by)
-                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+                  (category_id, workout_name, description, repetitions, duration_minutes, calories_burned, video_url, created_by)
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
         $stmt->bind_param(
-            "issiiii",
+            "issiissi",
             $data['category_id'],
             $data['workout_name'],
             $data['description'],
             $data['repetitions'],
             $data['duration_minutes'],
             $data['calories_burned'],
+            $data['video_url'],
             $data['created_by']
         );
 
         return $stmt->execute();
+    }
+
+    /* ======================
+       EXTRACT YOUTUBE VIDEO ID
+    ====================== */
+    public function extractYoutubeId($url) {
+        // Handle different YouTube URL formats
+        $patterns = [
+            '/youtube\.com\/watch\?v=([^&]+)/',
+            '/youtu\.be\/([^?]+)/',
+            '/youtube\.com\/embed\/([^?]+)/'
+        ];
+        
+        foreach ($patterns as $pattern) {
+            if (preg_match($pattern, $url, $matches)) {
+                return $matches[1];
+            }
+        }
+        
+        return $url; // Return as is if already an ID
     }
 }
 ?>

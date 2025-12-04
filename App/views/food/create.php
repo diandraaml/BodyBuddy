@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah Makanan - BodyBuddy</title>
-      <link rel="stylesheet" href="App/assets/css/global.css">
-   <link rel="stylesheet" href="App/assets/css/food.css">
+    <link rel="stylesheet" href="App/assets/css/global.css">
+    <link rel="stylesheet" href="App/assets/css/food.css">
 </head>
 <body>
     <nav class="navbar">
@@ -17,7 +17,7 @@
             <nav class="nav-links">
                 <a href="index.php?page=dashboard">Dashboard</a>
                 <a href="index.php?page=workout">Workout</a>
-                <a href="index.php?page=food">Makanan</a>
+                <a href="index.php?page=trainer-food" style="font-weight: bold;">Kelola Makanan</a>
                 <a href="index.php?page=profile">Profile</a>
                 <a href="index.php?page=consultation">Konsultasi</a>
                 <a href="index.php?page=progress">Progress</a>
@@ -27,7 +27,7 @@
     </nav>
 
     <div class="container">
-        <a href="index.php?page=food" class="btn btn-secondary btn-small">← Kembali</a>
+        <a href="index.php?page=trainer-food" class="btn btn-secondary btn-small">← Kembali</a>
         
         <div class="card" style="max-width: 700px; margin: 2rem auto;">
             <h2>Tambah Makanan Baru</h2>
@@ -38,7 +38,7 @@
                 </div>
             <?php endif; ?>
 
-            <form action="index.php?page=food&action=store" method="POST">
+            <form action="index.php?page=trainer-food&action=store" method="POST">
                 <div class="form-group">
                     <label for="food_name">Nama Makanan *</label>
                     <input type="text" id="food_name" name="food_name" required placeholder="Contoh: Nasi Goreng">
@@ -83,12 +83,12 @@
 
                 <div style="display: flex; gap: 1rem;">
                     <button type="submit" class="btn btn-primary" style="flex: 1;">Simpan Makanan</button>
-                    <a href="index.php?page=food" class="btn btn-secondary" style="flex: 1; text-align: center; line-height: 2.5;">Batal</a>
+                    <a href="index.php?page=trainer-food" class="btn btn-secondary" style="flex: 1; text-align: center; line-height: 2.5;">Batal</a>
                 </div>
             </form>
         </div>
     </div>
 
-    <script src="assets/js/main.js"></script>
+    <script src="app/assets/js/main.js"></script>
 </body>
 </html>

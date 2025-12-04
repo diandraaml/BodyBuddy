@@ -9,7 +9,7 @@ class Food {
 
     public function __construct() {
         $database = new Database();
-        $this->conn = $database->getConnection(); // MySQLi connection
+        $this->conn = $database->getConnection();
     }
 
     public function getAllFoods() {
@@ -62,6 +62,19 @@ class Food {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
+    public function getUserFoodById($id, $userId) {
+        $query = "SELECT uf.*, f.food_name, f.calories
+                  FROM $this->userFoodTable uf
+                  JOIN $this->table f ON uf.food_id = f.id
+                  WHERE uf.id = ? AND uf.user_id = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("ii", $id, $userId);
+        $stmt->execute();
+
+        return $stmt->get_result()->fetch_assoc();
+    }
+
     public function getTodayCalories($userId) {
         $query = "SELECT SUM(total_calories) AS total
                   FROM $this->userFoodTable
@@ -101,6 +114,41 @@ class Food {
             $data['description'],
             $data['created_by']
         );
+
+        return $stmt->execute();
+    }
+
+    public function updateFood($data) {
+        $query = "UPDATE $this->table
+                  SET food_name = ?, calories = ?, protein = ?, carbs = ?, fats = ?, description = ?
+                  WHERE id = ?";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param(
+            "siiidsi",
+            $data['food_name'],
+            $data['calories'],
+            $data['protein'],
+            $data['carbs'],
+            $data['fats'],
+            $data['description'],
+            $data['id']
+        );
+
+        return $stmt->execute();
+    }
+
+    public function deleteFood($id) {
+        // Hapus semua user_foods yang terkait dulu
+        $deleteUserFoods = "DELETE FROM $this->userFoodTable WHERE food_id = ?";
+        $stmt1 = $this->conn->prepare($deleteUserFoods);
+        $stmt1->bind_param("i", $id);
+        $stmt1->execute();
+
+        // Kemudian hapus food-nya
+        $query = "DELETE FROM $this->table WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("i", $id);
 
         return $stmt->execute();
     }

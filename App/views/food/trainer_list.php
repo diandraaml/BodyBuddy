@@ -17,7 +17,7 @@
             <nav class="nav-links">
                 <a href="index.php?page=dashboard">Dashboard</a>
                 <a href="index.php?page=workout">Workout</a>
-                <a href="index.php?page=trainer-food">Kelola Makanan</a>
+                <a href="index.php?page=trainer-food">Makanan</a>
                 <a href="index.php?page=profile">Profile</a>
                 <a href="index.php?page=consultation">Konsultasi</a>
                 <a href="index.php?page=progress">Progress</a>
@@ -44,11 +44,6 @@
             </div>
         <?php endif; ?>
 
-        <!-- Info Card -->
-        <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-            <h3 style="margin: 0 0 0.5rem 0; color: white;">👨‍🏫 Mode Trainer</h3>
-            <p style="margin: 0; opacity: 0.9;">Anda dapat menambah, mengedit, dan menghapus makanan di database. Member akan dapat melihat dan menambahkan makanan yang Anda buat ke dalam catatan harian mereka.</p>
-        </div>
 
         <!-- Daftar Makanan -->
         <div class="card">
@@ -82,10 +77,6 @@
                         <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;"><?php echo $food['description']; ?></p>
                         
                         <div style="display: flex; gap: 0.5rem;">
-                            <a href="index.php?page=trainer-food&action=edit&id=<?php echo $food['id']; ?>" 
-                               class="btn btn-primary btn-small" style="flex: 1; text-align: center;">
-                                Edit
-                            </a>
                             <form action="index.php?page=trainer-food&action=delete" method="POST" style="flex: 1;">
                                 <input type="hidden" name="id" value="<?php echo $food['id']; ?>">
                                 <button type="submit" class="btn btn-danger btn-small" style="width: 100%;" 

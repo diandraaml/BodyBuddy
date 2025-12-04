@@ -175,5 +175,13 @@ class WorkoutHistory {
         $stmt->bind_param("ii", $id, $userId);
         return $stmt->execute();
     }
+    
+    public function deleteByWorkoutId($workoutId) {
+    $query = "DELETE FROM {$this->table} WHERE workout_id = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("i", $workoutId);
+    return $stmt->execute();
 }
+}
+
 ?>

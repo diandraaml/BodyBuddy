@@ -59,6 +59,8 @@ switch ($page) {
             $controller = new App\Controllers\WorkoutDetailController();
         } elseif ($action == 'create' || $action == 'store') {
             $controller = new App\Controllers\WorkoutCreateController();
+        } elseif ($action == 'delete') {
+            $controller = new App\Controllers\WorkoutDeleteController();
         } else {
             $controller = new App\Controllers\WorkoutListController();
         }

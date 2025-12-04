@@ -60,7 +60,6 @@
                     <label for="role">Daftar Sebagai</label>
                     <select id="role" name="role" required>
                         <option value="member">Member</option>
-                        <option value="trainer">Trainer</option>
                     </select>
                 </div>
 

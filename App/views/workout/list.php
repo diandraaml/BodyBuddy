@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workout - BodyBuddy</title>
     <link rel="stylesheet" href="App/assets/css/global.css">
-   <link rel="stylesheet" href="App/assets/css/workout.css">
+    <link rel="stylesheet" href="App/assets/css/workout.css">
 </head>
 <body>
     <nav class="navbar">
@@ -40,6 +40,12 @@
             </div>
         <?php endif; ?>
 
+        <?php if (isset($_SESSION['error'])): ?>
+            <div class="alert alert-error">
+                <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+            </div>
+        <?php endif; ?>
+
         <div class="category-filter">
             <label class="kategori-label">Kategori :</label>
             
@@ -57,9 +63,6 @@
                 <?php endforeach; ?>
             </select>
         </div>
-
-
-
 
         <div class="grid">
             <?php foreach ($workouts as $workout): ?>
@@ -84,9 +87,19 @@
                     </div>
                     
                     <a href="index.php?page=workout&action=detail&id=<?php echo $workout['id']; ?>" 
-                       class="btn btn-primary btn-small" style="width: 100%;">
+                       class="btn btn-primary btn-small" style="width: 100%; margin-bottom: 0.5rem;">
                         Lihat Detail
                     </a>
+
+                    <?php if ($_SESSION['role'] === 'trainer'): ?>
+                        <form action="index.php?page=workout&action=delete" method="POST" style="width: 100%;">
+                            <input type="hidden" name="id" value="<?php echo $workout['id']; ?>">
+                            <button type="submit" class="btn btn-danger btn-small" style="width: 100%;" 
+                                    onclick="return confirm('Yakin ingin menghapus workout \"<?php echo addslashes($workout['workout_name']); ?>\"?\n\nIni akan menghapus semua catatan member yang menggunakan workout ini.')">
+                                Hapus Workout
+                            </button>
+                        </form>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>

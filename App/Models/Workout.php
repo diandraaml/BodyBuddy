@@ -50,22 +50,7 @@ class Workout {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    /* ======================
-       GET WORKOUT BY ID
-    ====================== */
-    public function getWorkoutById($id) {
-        $query = "SELECT w.*, c.category_name 
-                  FROM {$this->table} w
-                  JOIN {$this->categoryTable} c ON w.category_id = c.id
-                  WHERE w.id = ?";
-
-        $stmt = $this->conn->prepare($query);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-
-        return $stmt->get_result()->fetch_assoc();
-    }
-
+    
     /* ======================
        COMPLETE WORKOUT
     ====================== */
@@ -123,6 +108,7 @@ class Workout {
         return $result['total'] ?? 0;
     }
 
+
     /* ======================
        CREATE NEW WORKOUT
     ====================== */
@@ -167,5 +153,33 @@ class Workout {
         
         return $url; // Return as is if already an ID
     }
+    
+/* ======================
+   GET WORKOUT BY ID
+====================== */
+public function getWorkoutById($id) {
+    $query = "SELECT w.*, wc.category_name, u.username as created_by_name
+              FROM workouts w
+              LEFT JOIN workout_categories wc ON w.category_id = wc.id
+              LEFT JOIN users u ON w.created_by = u.id
+              WHERE w.id = ?";
+    
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    
+    $result = $stmt->get_result();
+    return $result->fetch_assoc();
+}
+
+/* ======================
+   DELETE WORKOUT
+====================== */
+public function deleteWorkout($id) {
+    $query = "DELETE FROM workouts WHERE id = ?";
+    $stmt = $this->conn->prepare($query);
+    $stmt->bind_param("i", $id);
+    return $stmt->execute();
+}
 }
 ?>

@@ -14,7 +14,7 @@ class CreateFoodController {
         $this->foodModel = new Food();
     }
 
-    // ===== CREATE =====
+
     public function create() {
         include __DIR__ . '/../views/food/create.php';
     }
@@ -45,48 +45,5 @@ class CreateFoodController {
         exit();
     }
 
-    // ===== EDIT =====
-    public function edit() {
-        $id = $_GET['id'] ?? null;
-        if (!$id) {
-            header('Location: index.php?page=food');
-            exit();
-        }
 
-        $food = $this->foodModel->getFoodById($id);
-        if (!$food) {
-            $_SESSION['error'] = 'Makanan tidak ditemukan.';
-            header('Location: index.php?page=food');
-            exit();
-        }
-
-        include __DIR__ . '/../views/food/edit.php';
-    }
-
-    // ===== UPDATE =====
-    public function update() {
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header('Location: index.php?page=food');
-            exit();
-        }
-
-        $data = [
-            'id'          => $_POST['id'],
-            'food_name'   => $_POST['food_name'],
-            'calories'    => $_POST['calories'],
-            'protein'     => $_POST['protein'],
-            'carbs'       => $_POST['carbs'],
-            'fats'        => $_POST['fats'],
-            'description' => $_POST['description']
-        ];
-
-        if ($this->foodModel->updateFood($data)) {
-            $_SESSION['success'] = 'Makanan berhasil diupdate!';
-        } else {
-            $_SESSION['error'] = 'Gagal mengupdate makanan.';
-        }
-
-        header('Location: index.php?page=food');
-        exit();
-    }
 }

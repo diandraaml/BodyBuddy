@@ -14,8 +14,8 @@ class Food {
     private $carbs;
     private $fats;
     private $description;
-    private $image_url;
     private $created_by;
+
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();

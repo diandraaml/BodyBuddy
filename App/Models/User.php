@@ -11,13 +11,17 @@ class User {
     private $username;
     private $password;
     private $email;
-    private $full_name;
+    private $name;
     private $role;
     private $height;
     private $weight;
     private $bmi_category;
     private $target_weight;
     private $created_at;
+    private $phone;
+    private $date_of_birth;
+    private $gender;
+
 
     public function __construct() {
         $database = new Database();

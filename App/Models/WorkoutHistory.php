@@ -15,7 +15,6 @@ class WorkoutHistory {
     private $total_calories_burned;
     private $duration_minutes;
     private $completed_at;
-    private $notes;
     private $created_at;
 
     public function __construct() {

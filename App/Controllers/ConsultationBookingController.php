@@ -38,16 +38,4 @@ class ConsultationBookingController {
         exit();
     }
 
-    public function cancel() {
-        $bookingId = $_POST['booking_id'];
-
-        if ($this->consultationModel->cancelBooking($bookingId)) {
-            $_SESSION['success'] = 'Booking berhasil dibatalkan.';
-        } else {
-            $_SESSION['error'] = 'Gagal membatalkan booking.';
-        }
-
-        header('Location: index.php?page=consultation');
-        exit();
-    }
 }

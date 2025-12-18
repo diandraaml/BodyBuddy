@@ -7,6 +7,18 @@ class User {
     private $conn;
     private $table = 'users';
 
+    private $id;
+    private $username;
+    private $password;
+    private $email;
+    private $full_name;
+    private $role;
+    private $height;
+    private $weight;
+    private $bmi_category;
+    private $target_weight;
+    private $created_at;
+
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection(); // mysqli connection

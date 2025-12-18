@@ -7,6 +7,15 @@ class PaymentMethod {
     private $conn;
     private $table = 'payment_methods';
 
+    private $id;
+    private $user_id;
+    private $payment_type;
+    private $card_number;
+    private $card_holder_name;
+    private $expiry_date;
+    private $is_default;
+    private $created_at;
+    
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection(); 

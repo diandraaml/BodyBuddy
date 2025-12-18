@@ -6,6 +6,13 @@ class FoodHistoryLog {
     private $conn;
     private $table = 'food_history_logs';
 
+     private $id;
+    private $user_id;
+    private $food_id;
+    private $quantity;
+    private $total_calories;
+    private $date_added;
+    
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();
@@ -122,5 +129,28 @@ class FoodHistoryLog {
         
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
+        public function getTodayFoods($userId, $date)
+    {
+        $query = "SELECT 
+                    id,
+                    food_id,
+                    food_name,
+                    quantity,
+                    calories_per_unit AS calories,
+                    total_calories
+                FROM $this->table
+                WHERE user_id = ?
+                    AND action_type = 'add'
+                    AND DATE(created_at) = ?
+                ORDER BY created_at DESC";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->bind_param("is", $userId, $date);
+        $stmt->execute();
+
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
 }
 ?>

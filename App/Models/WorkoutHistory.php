@@ -8,6 +8,16 @@ class WorkoutHistory {
     private $conn;
     private $table = 'workout_history';
 
+    private $id;
+    private $user_id;
+    private $workout_id;
+    private $sets_completed;
+    private $total_calories_burned;
+    private $duration_minutes;
+    private $completed_at;
+    private $notes;
+    private $created_at;
+
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();

@@ -6,6 +6,13 @@ class Progress {
     private $conn;
     private $table = 'progress';
 
+    private $id;
+    private $user_id;
+    private $weight;
+    private $bmi;
+    private $recorded_date;
+    private $notes;
+    
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection(); // MySQLi connection

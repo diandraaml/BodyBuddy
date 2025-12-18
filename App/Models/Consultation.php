@@ -7,6 +7,14 @@ class Consultation {
     private $conn;
     private $table = 'consultations';
 
+    private $id;
+    private $member_id;
+    private $trainer_id;
+    private $message;
+    private $response;
+    private $status;
+    private $created_at;
+    
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection(); 

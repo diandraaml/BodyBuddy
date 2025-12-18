@@ -1,16 +1,28 @@
 <?php
 session_start();
 
-// Import namespaces
+// ===========================
+// IMPORT CONTROLLERS
+// ===========================
 use App\Controllers\AuthController;
 use App\Controllers\HomeController;
 use App\Controllers\DashboardController;
-use App\Controllers\WorkoutController;
 use App\Controllers\ProfileController;
-use App\Controllers\ConsultationController;
+use App\Controllers\ConsultationListController;
+use App\Controllers\ConsultationBookingController;
+use App\Controllers\ConsultationPaymentController;
+use App\Controllers\TrainerViewBookingController;
+use App\Controllers\TrainerProcessBookingController;
+use App\Controllers\TrainerDeleteFoodController;
+use App\Controllers\TrainerCreateFoodController;
+
+
+
 use App\Controllers\ProgressController;
 
-// Autoloader PSR-4
+// ===========================
+// PSR-4 AUTOLOADER
+// ===========================
 spl_autoload_register(function ($class) {
     $prefix = 'App\\';
     $base_dir = __DIR__ . '/App/';
@@ -28,16 +40,14 @@ spl_autoload_register(function ($class) {
     }
 });
 
-// ---------------------------
-//   FIXED ROUTING
-// ---------------------------
-
-// Page & action dari URL
-$page = $_GET['page'] ?? 'home';
+// ===========================
+// ROUTING
+// ===========================
+$page   = $_GET['page']   ?? 'home';
 $action = $_GET['action'] ?? 'index';
 
-// Routing utama
 switch ($page) {
+
     case 'home':
         $controller = new HomeController();
         break;
@@ -50,79 +60,78 @@ switch ($page) {
         $controller = new DashboardController();
         break;
 
+    // ===========================
+    // WORKOUT
+    // ===========================
     case 'workout':
-        // Tentukan controller berdasarkan action
-        if ($action == 'detail') {
+        if ($action === 'detail') {
             $controller = new App\Controllers\WorkoutDetailController();
-            $action = 'show'; // Method name
-        } elseif ($action == 'complete') {
+            $action = 'show';
+        } elseif ($action === 'complete') {
             $controller = new App\Controllers\WorkoutDetailController();
-        } elseif ($action == 'create' || $action == 'store') {
+        } elseif ($action === 'create' || $action === 'store') {
             $controller = new App\Controllers\WorkoutCreateController();
-        } elseif ($action == 'delete') {
+        } elseif ($action === 'delete') {
             $controller = new App\Controllers\WorkoutDeleteController();
         } else {
             $controller = new App\Controllers\WorkoutListController();
         }
         break;
 
-    // ROUTING UNTUK MEMBER FOOD (CASE TERPISAH!)
+    // ===========================
+    // MEMBER FOOD (DIPISAH)
+    // ===========================
     case 'member-food':
-        require_once 'App/Models/Food.php';
-        require_once 'App/Models/FoodHistoryLog.php';
-        require_once 'App/Controllers/MemberFoodController.php';
-        
-        $controller = new App\Controllers\MemberFoodController();
-        
-        switch ($action) {
-            case 'add':
-                $controller->add();
-                exit();
-            case 'delete':
-                $controller->delete();
-                exit();
-            case 'history':
-                $controller->history();
-                exit();
-            default:
-                $controller->index();
-                exit();
-        }
-        break;
+        $controller = new App\Controllers\MemberFoodListController();
+        $controller->index();
+        exit();
 
-    // ROUTING UNTUK TRAINER FOOD (CASE TERPISAH!)
+    case 'member-food-log':
+        $controller = new App\Controllers\MemberFoodLogController();
+
+        if ($action === 'add') {
+            $controller->add();
+        } elseif ($action === 'delete') {
+            $controller->delete();
+        }
+        exit();
+
+    case 'member-food-history':
+        $controller = new App\Controllers\MemberFoodProgressController();
+        $controller->history();
+        exit();
+
+    // ===========================
+    // TRAINER FOOD
+    // ===========================
     case 'trainer-food':
-        require_once 'App/Models/Food.php';
-        require_once 'App/Controllers/TrainerFoodController.php';
-        
         $controller = new App\Controllers\TrainerFoodController();
-        
+
         switch ($action) {
             case 'create':
                 $controller->create();
-                exit();
+                break;
             case 'store':
                 $controller->store();
-                exit();
+                break;
             case 'edit':
                 $controller->edit();
-                exit();
+                break;
             case 'update':
                 $controller->update();
-                exit();
+                break;
             case 'delete':
                 $controller->delete();
-                exit();
+                break;
             default:
-                // Show trainer list
-                $foodModel = new App\Models\Food();
-                $foods = $foodModel->getAllFoods();
-                include 'App/views/food/trainer_list.php';
-                exit();
+                $controller->index();
+                break;
         }
-        break;
+        exit();
 
-    // BACKWARD COMPATIBILITY - Redirect old 'food' page
+    // ===========================
+    // BACKWARD COMPATIBILITY
+    // ===========================
     case 'food':
         if (isset($_SESSION['role']) && $_SESSION['role'] === 'trainer') {
             header('Location: index.php?page=trainer-food');
@@ -130,15 +139,58 @@ switch ($page) {
             header('Location: index.php?page=member-food');
         }
         exit();
-        break;
     
+    case 'food-create':
+    (new CreateFoodController())->create();
+    break;
+
+    case 'food-store':
+        (new CreateFoodController())->store();
+        break;
+
+    case 'food-edit':
+        (new CreateFoodController())->edit();
+        break;
+
+    case 'food-update':
+        (new CreateFoodController())->update();
+        break;
+
+    case 'food-delete':
+        (new TrainerDeleteFoodController())->delete();
+        break;
+
     case 'profile':
         $controller = new ProfileController();
         break;
 
+     // ================= MEMBER =================
     case 'consultation':
-        $controller = new ConsultationController();
+        $controller = new ConsultationListController();
+        $controller->index();
         break;
+
+    case 'consultation-book':
+        $controller = new ConsultationBookingController();
+        $controller->book();
+        break;
+
+    case 'consultation-payment':
+        $controller = new ConsultationPaymentController();
+        $controller->upload();
+        break;
+
+    // ================= TRAINER =================
+    case 'trainer-bookings':
+        $controller = new TrainerViewBookingController();
+        $controller->index();
+        break;
+
+    case 'trainer-process-booking':
+        $controller = new TrainerProcessBookingController();
+        $controller->process();
+        break;
+
 
     case 'progress':
         $controller = new ProgressController();
@@ -149,10 +201,11 @@ switch ($page) {
         break;
 }
 
-// Eksekusi action (hanya jika controller di-set dan belum exit)
+// ===========================
+// EXECUTE CONTROLLER
+// ===========================
 if (isset($controller) && method_exists($controller, $action)) {
     $controller->$action();
 } elseif (isset($controller)) {
     $controller->index();
 }
-?>

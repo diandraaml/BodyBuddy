@@ -1,15 +1,15 @@
 <?php
-// App/Controllers/DashboardController.php
 namespace App\Controllers;
 
 use App\Models\Workout;
 use App\Models\Food;
-use App\Models\WorkoutHistory;
+use App\Controllers\WorkoutHistoryController;
 
 class DashboardController {
+
     private $workoutModel;
     private $foodModel;
-    private $workoutHistoryModel;
+    private $workoutHistoryController;
 
     public function __construct() {
         if (!isset($_SESSION['user_id'])) {
@@ -19,29 +19,29 @@ class DashboardController {
 
         $this->workoutModel = new Workout();
         $this->foodModel = new Food();
-        $this->workoutHistoryModel = new WorkoutHistory();
+        $this->workoutHistoryController = new WorkoutHistoryController();
     }
 
     public function index() {
-        // Get workout categories
+        $userId = $_SESSION['user_id'];
+
         $workoutCategories = $this->workoutModel->getCategories();
-        
-        // Get recent workouts from WorkoutHistory (BUKAN dari Workout model)
-        $recentWorkouts = $this->workoutHistoryModel->getRecentWorkouts($_SESSION['user_id'], 5);
-        
-        // Get today's calories from food
-        $todayCalories = $this->foodModel->getTodayCalories($_SESSION['user_id']);
-        
-        // Get today's calories burned from WorkoutHistory
-        $todayCaloriesBurned = $this->workoutHistoryModel->getTodayCaloriesBurned($_SESSION['user_id']);
-        
-        // Optional: Get workout stats
-        $workoutStats = $this->workoutHistoryModel->getWorkoutStats($_SESSION['user_id']);
-        
-        // Optional: Get workout streak
-        $workoutStreak = $this->workoutHistoryModel->getWorkoutStreak($_SESSION['user_id']);
-        
+
+        $recentWorkouts = $this->workoutHistoryController
+            ->getRecentForDashboard($userId);
+
+        $todayCalories = $this->foodModel
+            ->getTodayCalories($userId);
+
+        $todayCaloriesBurned = $this->workoutHistoryController
+            ->getTodayCaloriesBurned($userId);
+
+        $workoutStats = $this->workoutHistoryController
+            ->getStats($userId);
+
+        $workoutStreak = $this->workoutHistoryController
+            ->getStreak($userId);
+
         include __DIR__ . '/../views/dashboard.php';
     }
 }
-?>

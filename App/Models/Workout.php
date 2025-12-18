@@ -9,6 +9,17 @@ class Workout {
     private $categoryTable = 'workout_categories';
     private $userWorkoutTable = 'user_workouts';
 
+private $id;
+    private $category_id;
+    private $workout_name;
+    private $description;
+    private $repetitions;
+    private $duration_minutes;
+    private $calories_burned;
+    private $video_url;
+    private $image_url;
+    private $created_by;
+
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();

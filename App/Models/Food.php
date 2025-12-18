@@ -7,6 +7,15 @@ class Food {
     private $table = 'foods';
     private $userFoodTable = 'user_foods';
 
+    private $id;
+    private $food_name;
+    private $calories;
+    private $protein;
+    private $carbs;
+    private $fats;
+    private $description;
+    private $image_url;
+    private $created_by;
     public function __construct() {
         $database = new Database();
         $this->conn = $database->getConnection();
@@ -139,13 +148,12 @@ class Food {
     }
 
     public function deleteFood($id) {
-        // Hapus semua user_foods yang terkait dulu
         $deleteUserFoods = "DELETE FROM $this->userFoodTable WHERE food_id = ?";
         $stmt1 = $this->conn->prepare($deleteUserFoods);
         $stmt1->bind_param("i", $id);
         $stmt1->execute();
 
-        // Kemudian hapus food-nya
+    
         $query = "DELETE FROM $this->table WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         $stmt->bind_param("i", $id);
